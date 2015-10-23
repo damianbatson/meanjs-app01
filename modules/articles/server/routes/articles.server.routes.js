@@ -14,7 +14,7 @@ module.exports = function(app) {
 	app.route('/api/articles').all(articlesPolicy.isAllowed)
 		.get(articles.list)
 		.post(articles.createWithUpload)
-.post(multipartyMiddleware, articles.createWithUpload);
+		.post(multipartyMiddleware, articles.createWithUpload);
 // var users = require('../controllers/users.server.controller'),
 
 
