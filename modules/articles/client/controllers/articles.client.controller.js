@@ -8,17 +8,17 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$timeout
 
 
  $scope.create = function(picFile) {
-          console.log('create');
-                      console.log(picFile);
+		console.log('create');
+		console.log(picFile);
         var article = new Articles({
             title: this.title,
             content: this.content,
             image: null
         });
 
-         console.log(article);
-         $upload.upload({
-            url: '/api/articles', 
+		console.log(article);
+		$upload.upload({
+            url: 'api/articles', 
             method: 'POST', 
             headers: {'Content-Type': 'multipart/form-data'},
             fields: {article: article},
@@ -27,10 +27,10 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$timeout
 		$scope.uploadProgress = Math.floor(event.loaded / event.total);
 		// $scope.$apply();
 		}).success(function (data, status, headers, config, response) {
-			// $location.path('articles/' + response._id);
+			$location.path('articles');
 
-		        $scope.title = '';
-		        $scope.content = '';
+	        $scope.title = '';
+	        $scope.content = '';
 		// AlertService.success('Photo uploaded!');
 		}).error(function (err) {
 		$scope.uploadInProgress = false;

@@ -15,32 +15,32 @@ var _ = require('lodash'),
  * Create a article
  */
 
- exports.create = function(req, res) {
-	var article = new Article(req.body);
-	article.user = req.user;
+//  exports.create = function(req, res) {
+// 	var article = new Article(req.body);
+// 	article.user = req.user;
 
-	article.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.json(article);
-		}
-	});
-};
+// 	article.save(function(err) {
+// 		if (err) {
+// 			return res.status(400).send({
+// 				message: errorHandler.getErrorMessage(err)
+// 			});
+// 		} else {
+// 			res.json(article);
+// 		}
+// 	});
+// };
 
 exports.createWithUpload = function(req, res) {
- var file = req.files.file;
- console.log(file.name);
- console.log(file.type);
- console.log(file.path);
- console.log(req.body.article);
+	var file = req.files.file;
+	// console.log(file.name);
+	// console.log(file.type);
+	// console.log(file.path);
+	console.log(req.body.article);
 
-var art = JSON.parse(req.body.article);
-var article = new Article(art);
-article.user = req.user;
-// var original_data = req.body.article;
+	var image = JSON.parse(req.body.article);
+	var article = new Article(image);
+	article.user = req.user;
+	// var original_data = req.body.article;
 
 	fs.writeFile('./modules/articles/client/img/profile/uploads/' + req.files.file.name, req.files.file.buffer, function (err, original_data) {
 		if (err) {

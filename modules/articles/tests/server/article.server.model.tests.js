@@ -3,7 +3,14 @@
 /**
  * Module dependencies.
  */
-var should = require('should'),
+// var should = require('should'),
+// 	mongoose = require('mongoose'),
+
+// 	path = require('path'),
+// 	User = require(path.resolve('./modules/users/server/models/user.server.model')),
+// 	Article = require(path.resolve('./modules/articles/server/models/article.server.model'));
+
+	var should = require('should'),
 	mongoose = require('mongoose'),
 	User = mongoose.model('User'),
 	Article = mongoose.model('Article');

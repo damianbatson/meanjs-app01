@@ -2,17 +2,17 @@
 
 // Load the module dependencies
 var config = require('../config'),
-	path = require('path'),
+    path = require('path'),
     cookieParser = require('cookie-parser'),
     passport = require('passport'),
     socketio = require('socket.io'),
-	session = require('express-session'),
-	MongoStore = require('connect-mongo')(session),
+    session = require('express-session'),
+    MongoStore = require('connect-mongo')(session),
     http = require('http');
 
 // Define the Socket.io configuration method
 module.exports = function(app, db) {
-	// Create a new HTTP server
+    // Create a new HTTP server
     var server = http.createServer(app);
 
     // Create a new Socket.io server
@@ -20,7 +20,7 @@ module.exports = function(app, db) {
 
     // Create a MongoDB storage object
     var mongoStore = new MongoStore({
-        db: db.connection.db,
+        mongooseConnection: db.connection,
         collection: config.sessionCollection
     });
 
